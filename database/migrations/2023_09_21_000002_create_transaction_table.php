@@ -1,14 +1,13 @@
 <?php
 
-namespace Database\Migrations;
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionTable extends Migration
+return new class extends Migration
 {
-    /**
+
+     /**
      * Schema table name to migrate
      * @var string
      */
@@ -27,24 +26,25 @@ class CreateTransactionTable extends Migration
             $table->string('title')
             ;
             $table->string('description');
-            $table->string('operation')
+            $table->string('operation');
             $table->string('destiny')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
 
 
-            $table->integer('client_id');
-            $table->integer('user_id');
+            $table->unsignedInteger('client_id');
+            $table->unsignedInteger('user_id');
 
             // apt-get update or try with --fix-missing
 
-            $table->index(["client_id"], 'fk_transansao_Client_idx');
+            $table->index(["client_id"],
+            'fk_transansao_Client_idx');
 
             $table->index(["user_id"], 'fk_transansao_usuario1_idx');
 
 
             $table->foreign('client_id', 'fk_transansao_Client_idx')
-                ->references('id')->on('client')
+                ->references('id')->on('clients')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
@@ -64,4 +64,9 @@ class CreateTransactionTable extends Migration
     {
         Schema::dropIfExists($this->tableName);
     }
-}
+
+};
+
+
+
+
