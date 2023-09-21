@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorizationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::prefix('auth')->group(function () {
+    Route::post('token', [AuthorizationController::class, 'token']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('whoami', [AuthorizationController::class, 'whoami']);
+        Route::post('logout', [AuthorizationController::class, 'logout']);
+    });
 });
+
+
+
+
