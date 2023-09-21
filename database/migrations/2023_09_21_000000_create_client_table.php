@@ -25,10 +25,11 @@ return new class extends Migration
             $table->increments('id');
 
             $table->string('name')->nullable();
-            $table->string('id_nr')->nullable();
+            $table->string('id_number')->nullable();
 
-            $table->string('description')->nullable();
-            $table->integer('contact')->nullable();
+            $table->string('role')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('phone')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('gender')->nullable();
 
