@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -22,16 +21,19 @@ use App\Http\Controllers\TransactionController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/login', [LoginController::class, 'login'])->name('login');
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
     Route::resource('clients', ClientController::class);
-    Route::resource('transactions', TransactionController::class);
     Route::resource('users', UserController::class);
+
+    Route::get('/transactions/reports', [App\Http\Controllers\HomeController::class, 'index'])->name('transactions.reports');
+    Route::resource('transactions', TransactionController::class);
+
+
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
