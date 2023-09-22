@@ -304,7 +304,7 @@ return [
 
         [
             'text'    => 'Transactions',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fa fa-exchange-alt',
             'submenu' => [
                 [
                     'text' => 'List',
@@ -321,7 +321,7 @@ return [
         ['header' => 'General settings'],
         [
             'text'    => 'Clients',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fa fa-solid fa-handshake',
             'submenu' => [
                 [
                     'text' => 'List',
@@ -337,7 +337,7 @@ return [
 
         [
             'text'    => 'Users',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fa fa-solid fa-users',
             'submenu' => [
                 [
                     'text' => 'List',
